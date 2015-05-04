@@ -1,0 +1,22 @@
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: root
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: e-commerceex_development
+
+test:
+  <<: *default
+  database: e-commerceex_test
+
+production:
+  <<: *default
+  database: e-commerceex_production
+  username: e-commerceex
+  password: <%= ENV['E-COMMERCEEX_DATABASE_PASSWORD'] %>
